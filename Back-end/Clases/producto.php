@@ -45,10 +45,52 @@ class Producto{
         return $this->descripcion;
       }
       function set_id_producto($id_producto) {
-          $this->id_vendedor =$id_producto;
+          $this->id_producto =$id_producto;
       }
       function get_id_producto() {
           return $this->id_producto;
+      }
+
+      //Agregar en json
+      public function addProducts(){
+        $jsonContent = file_get_contents('../Datos/Productos.json');
+        $productos = json_decode($jsonContent,true);
+        $productos[] = array(
+          "id"=> $this->id,
+          "nombre"=> $this->nombre,
+          "precio"=> $this->precio,
+          "stock"=> $this->stock,
+          "imageURL"=> $this->imageURL,
+          "categoria" => $this->categoria,
+          "descripcion"=>$this->descripcion
+        );
+        $archivo = fopen("../Datos/Productos.json", "w");
+        fwrite($archivo, json_encode($productos));
+        fclose($archivo);
+        $fileContent = file_get_contents("../Datos/Productos.json");
+        echo $fileContent;
+      }
+
+      //Leer json
+      public static function readProducts(){
+        $fileContent = file_get_contents("../Datos/Productos.json");
+      }
+      //Leer producto especifico por ID
+      public static function getProducto($id){
+        $fileContent = file_get_contents("../Datos/Productos.json");
+        $productos = json_decode($fileContent,true);
+        
+        for ($idx = 0; $idx < count($productos); $idx++){
+          $id_tmp_prod = $productos[$idx]["id"];
+          if($id_tmp_prod == $id){
+            echo json_encode($productos[$idx],true);
+            return 0;
+          }
+  
+        }
+        echo "Producto no encontrado.";
+        return -1;
+        
       }
 }
 ?>
