@@ -74,6 +74,7 @@ class Producto{
       //Leer json
       public static function readProducts(){
         $fileContent = file_get_contents("../Datos/Productos.json");
+        echo $fileContent;
       }
       //Leer producto especifico por ID
       public static function getProducto($id){
