@@ -1,0 +1,24 @@
+.mat-grid-list{
+    
+    
+    padding-top: 10px;
+    height: 50vh;
+}
+.example-card {
+    width: 80%;
+    height: 95%;
+    
+    
+  }
+
+  mat-card-content{
+    font-size: 2.9vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+img{
+    height: 15vh;
+}

@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<mat-grid-list cols="1" rowHeight="3:1" gutterSize="100px" *ngFor="let p of productos">
+    <mat-grid-tile class="cu1" routerLink="producto/{{p.id}}">
+        
+        <mat-card class="example-card" >
+            <mat-card-content>
+                <img src="{{p.imageURL}}">
+            </mat-card-content>
+            <mat-card-content >
+            Producto: {{p.nombre}}
+            </mat-card-content>
+            <mat-card-content>Precio: ${{p.precio}}</mat-card-content>
+            <mat-card-content>Unidades disponibles: {{p.stock}}</mat-card-content>
+          </mat-card>
+          <mat-icon class="arrow">keyboard_arrow_right</mat-icon>
+    </mat-grid-tile>
+
+  
+
+</mat-grid-list>
