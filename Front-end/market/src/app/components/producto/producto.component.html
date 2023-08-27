@@ -1,1 +1,48 @@
-<p>producto works!</p>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<app-navbar></app-navbar>
+<div class="back-button">
+    <button mat-icon-button routerLink="/" class="custom-button">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+      Regresar
+    </button>
+  </div>
+<div class="container">
+  <div class="content">
+    <div class="product">
+      <img [src]="product.imageURL" alt="Product Image" class="product-img" />
+      <div class="product-title"><h2>{{ product.nombre }}</h2></div>
+      <div class="product-price"><h4>{{ product.precio }}</h4></div>
+      <div class="product-descripcion"><p>{{ product.descripcion }}</p></div>
+    </div>
+    <div class="buttons">
+      <button mat-raised-button class="custom-button">Agregar al carrito</button>
+      <button mat-raised-button class="custom-button">Comprar ahora</button>
+    </div>
+  </div>
+</div>
+
+
+<!--
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<app-navbar></app-navbar>
+<div class="back-button">
+    <button mat-icon-button routerLink="/" class="custom-button">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+      Regresar
+    </button>
+  </div>
+<div class="container">
+  <div class="content">
+    <div class="product">
+      <img src="/assets/Manzana.png" alt="Product Image" class="product-img"/>
+      <div class="product-title"><h2>Manzana Roja</h2></div>
+      <div class="product-price"><h4>$ 0.60</h4></div>
+      <div class="product-descripcion"><p>Manzana Roja importada</p></div>
+    </div>
+    <div class="buttons">
+      <button mat-raised-button class="custom-button">Agregar al carrito</button>
+      <button mat-raised-button class="custom-button">Comprar ahora</button>
+    </div>
+  </div>
+</div>
+-->
