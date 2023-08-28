@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class = "titulo">
+    <h1><b>Mi carrito</b></h1>
+</div>
+
+<mat-grid-list cols="1" rowHeight="3:1" gutterSize="100px" *ngFor="let p of productos">
+
+    <mat-card class="example-card">
+        <button mat-raised-button>
+            <mat-icon iconPositionEnd class="close">close</mat-icon>
+        </button>
+        
+        <mat-card-content>
+            <img src="{{p.imageURL}}">
+            <mat-card class = "interna">
+            <mat-card-content>
+                {{p.nombre}}
+            </mat-card-content>
+            <mat-card-content>${{p.precio}} c/kg</mat-card-content>
+            
+        </mat-card>
+        <mat-card-content>Cantidad: {{p.stock}}</mat-card-content>
+        </mat-card-content>
+
+    </mat-card>
+
+
+</mat-grid-list>
+
+<div>
+    Total $15.00
+    <button class = "compra">Comprar ahora</button>
+</div>
