@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-
+import { CarritoComponent } from './components/carrito/carrito.component';
 
 import {MatIconModule} from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -21,7 +21,8 @@ import { ProductoComponent } from './components/producto/producto.component';
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    ProductoComponent
+    ProductoComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,
