@@ -43,8 +43,14 @@ switch($_SERVER['REQUEST_METHOD']){
         if (isset($_GET['id'])){
             //mostrar productos por id
             Producto::getProducto($_GET['id']);
-
-        }else{
+            break;
+        }
+        if (isset($_GET["categoria"])){
+            Producto::getProductoCategoria($_GET['categoria']);
+            break;
+        }
+        
+        else{
             //obtener todos los productos
             Producto::readProducts();
         }

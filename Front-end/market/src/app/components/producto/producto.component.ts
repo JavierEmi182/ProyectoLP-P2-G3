@@ -12,6 +12,7 @@ import { Producto } from 'src/app/interfaz/producto';
 export class ProductoComponent {
   product: Producto ={
       id: '',
+      cedulavendedor:'',
       nombre: '',
       precio: 0,
       stock: 0,
@@ -26,6 +27,7 @@ export class ProductoComponent {
     private productoSvc: ProductoService
   ) {
     const id = this.route.snapshot.params;
+    
     this.productoSvc.getProductbyID(Object.values(id)[0]).subscribe(
       (res: any) => {
         this.product = res;

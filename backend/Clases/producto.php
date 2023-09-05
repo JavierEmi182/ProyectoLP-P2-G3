@@ -93,5 +93,35 @@ class Producto{
         return -1;
         
       }
+
+      public static function getProductoCategoria($category){
+        $fileContent = file_get_contents("../Datos/Productos.json");
+        $productos = json_decode($fileContent,true);
+        $arr_filtrado = array();
+  
+        foreach( $productos as $producto){
+         if ($producto["categoria"] == $category){
+           $arr_filtrado[] = $producto;
+         }
+        }
+        
+        echo json_encode($arr_filtrado);
+      }
+
+      public static function getProductoVendedor($cedula){
+        $fileContent = file_get_contents("../Datos/Productos.json");
+        $productos = json_decode($fileContent,true);
+        $arr_filtrado = array();
+  
+        foreach( $productos as $producto){
+         if ($producto["cedulavendedor"] == $cedula){
+           $arr_filtrado[] = $producto;
+         }
+        }
+        
+        echo json_encode($arr_filtrado);
+      }
+
+
 }
 ?>

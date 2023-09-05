@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+<div class = "titulo">
+    <h1><b>Por favor ingrese su cedula para ver su carrito: </b></h1>
+</div>
+
+
+<div class="formulario">
+    <form class="example-form">
+        <mat-form-field>
+            <mat-label>Cedula: </mat-label>
+            <input matInput placeholder="0601921161" [formControl]="cedula" [value]="cedula" required>
+            <mat-error *ngIf="cedula.invalid">{{getErrorCed()}}</mat-error>
+        </mat-form-field>
+    </form>
+    <div class="example-button-row">
+        <button mat-raised-button color="primary" (click)="onSubmit(cedclient)">Crear</button>
+        <button mat-raised-button color="accent" routerLink="/">Cancelar</button>
+    </div>
+</div>

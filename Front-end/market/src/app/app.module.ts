@@ -16,13 +16,20 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductoComponent } from './components/producto/producto.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
+import { LoadcartComponent } from './components/loadcart/loadcart.component';
+import {MatInputModule} from '@angular/material/input';
+
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavbarComponent,
     ProductoComponent,
-    CarritoComponent
+    CarritoComponent,
+    LoadcartComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +41,11 @@ import { ProductoComponent } from './components/producto/producto.component';
     MatListModule,
     MatGridListModule,
     MatCardModule,
-    HttpClientModule
+    MatButtonModule,
+    MatSelectModule,
+    HttpClientModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
