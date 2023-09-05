@@ -5,8 +5,6 @@ import { ProductoComponent } from './components/producto/producto.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { LoadcartComponent } from './components/loadcart/loadcart.component';
 const routes: Routes = [
-
-  {path:'home',component:HomeComponent},
   {path:'carrito/:id',component:CarritoComponent},
   {path:'producto/:id',component:ProductoComponent},
   {path:'cargaCarrito',component:LoadcartComponent},

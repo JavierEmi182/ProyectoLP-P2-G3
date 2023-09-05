@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductoService } from 'src/app/servicios/producto.service';
+import { SharedService } from 'src/app/servicios/shared.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,7 +12,7 @@ export class HomeComponent {
   stringProds= ''
   prods:string[]=[]
   cant:any[]=[]
-constructor(private productSvc: ProductoService){
+constructor(private productSvc: ProductoService, private shaSvc:SharedService){
   this.obtenerDatosVista()
 }
 
@@ -65,6 +66,7 @@ agregarProducto(id:string){
     console.log(this.prods)
     console.log(this.cant)
   }
+  alert("Producto con id " + id + " agregado!")
 
 }
 
@@ -73,15 +75,17 @@ cargarCarrito(){
     let p= this.prods[i].toString()
     let c= this.cant[i].toString()
     console.log(this.prods)
-    let linea = p + ':' +c +','
+    let linea = '\"' + p + '\"' + ':' +c +','
     if(i==this.prods.length-1){
-      linea=p+':'+c
+      linea='\"' + p + '\"'+':'+c
     }
     
     this.stringProds+=linea
    
 
   }
+  this.stringProds = '{' + this.stringProds + '}';
+  this.shaSvc.saveCart(this.stringProds);
   console.log(this.stringProds)
 }
 

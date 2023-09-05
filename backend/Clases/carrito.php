@@ -25,30 +25,29 @@ class Carrito
         
     }
 
-    public static function updateCarrito($id){
+    public function updateCarrito($id){
 
         $fileContent = file_get_contents("../Datos/carrito.json");
         $carritos = json_decode($fileContent,true);
         $carrito = array(
-          "cedula" => self::$cedula,
-          "productos" => self::$stringProductos
+          "cedula" => $this->cedula,
+          "productos" => $this->stringProductos
         );
-        $indice =  Carrito::encontrarArrID($carritos,$id);
+        $indice =  Carrito::findID($carritos,$id);
         $carritos[$indice] = $carrito;
-        $file = fopen("../data/vendedores.json", 'w');
+        $file = fopen("../Datos/carrito.json", 'w');
         fwrite($file,json_encode($carritos));
         fclose($file);
-        $fileContent = file_get_contents("../Datos/carritos.json");
+        $fileContent = file_get_contents("../Datos/carrito.json");
         echo $fileContent;
 
     }
-
     
-      public static function encontrarArrID($arreglo, $id){
-        for($indice = 0; $indice<count($arreglo);$indice++){
-          $array = $arreglo[$indice];
-          if($array["id"] == $id){
-            return $indice;
+      public static function findID($arr, $id){
+        for($ind = 0; $ind<count($arr);$ind++){
+          $array = $arr[$ind];
+          if($array["cedula"] == $id){
+            return $ind;
           }
         }
   

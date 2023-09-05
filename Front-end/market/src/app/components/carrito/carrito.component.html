@@ -9,8 +9,8 @@
 <mat-grid-list cols="1" rowHeight="3:1" gutterSize="100px" *ngFor="let p of productos">
 
     <mat-card class="example-card">
-        <button mat-raised-button>
-            <mat-icon iconPositionEnd class="close">close</mat-icon>
+        <button mat-raised-button (click)="borrarProducto(p.id)">
+            <mat-icon iconPositionEnd class="close" >close</mat-icon>
         </button>
         
         <mat-card-content>
@@ -31,6 +31,6 @@
 </mat-grid-list>
 
 <div>
-    Total $15.00
-    <button class = "compra">Comprar ahora</button>
+    Total ${{total}}
+    <button class = "compra" (click)="comprar()">Comprar ahora</button>
 </div>

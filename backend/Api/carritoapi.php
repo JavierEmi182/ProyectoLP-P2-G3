@@ -15,24 +15,24 @@ header('Content-Type: application/json');
 include_once("../Clases/carrito.php");
 
 switch($_SERVER['REQUEST_METHOD']){
-    //se agrega un producto al carrito de compra
     case 'POST':
         $_POST = json_decode(file_get_contents('php://input'),true); //obtiene en json format
-        $jsonContent = file_get_contents('../data/carrito.json');
+        $jsonContent = file_get_contents('../Datos/carrito.json');
         $productos = json_decode($jsonContent,true);
         $productos[] = array(
         "cedula"=> $_POST ["cedula"],
         "productos" => $_POST["productos"]
         );
-        $archivo = fopen("../data/carrito.json", "w");
+        $archivo = fopen("../Datos/carrito.json", "w");
         fwrite($archivo, json_encode($productos ));
         fclose($archivo);
         $fileContent = file_get_contents("../Datos/carrito.json");
         echo $fileContent;
+        break;
     case "PUT":
         if (isset($_GET['id'])) {
             $_PUT = json_decode(file_get_contents('php://input'),true);
-            $carrito = new Carrito($_PUT['id'],$_PUT['productos']);
+            $carrito = new Carrito($_PUT['cedula'],$_PUT['productos']);
             $carrito->updateCarrito($_GET['id']);
         }
         break;
@@ -49,8 +49,10 @@ switch($_SERVER['REQUEST_METHOD']){
 
             $fileContent = file_get_contents("../Datos/carrito.json");
             echo $fileContent;
-
         }
-           
+
+        break;
+    
+
 }
 ?>

@@ -16,7 +16,8 @@ export class CarritoComponent {
   productos : Producto[]=[]
   carritoClient!: Carrito;
   c !: Number
-  constructor(private route: ActivatedRoute, private productSvc: ProductoService, private carSvc: CarritoService){
+   total :Number=0 
+  constructor(private router:Router, private route: ActivatedRoute, private productSvc: ProductoService, private carSvc: CarritoService){
     
   }
 
@@ -40,13 +41,48 @@ export class CarritoComponent {
         this.c= Number(cantidad[i])
         this.p= r as Producto
           this.p.stock= this.c
+          let t= ( Number(this.p.precio) * Number(this.c))
+          
+          this.total=Number((Math.round(Number(this.total) + Number(t) * 100) / 100).toFixed(2))
+          
           this.productos.push(this.p)
+          
         })
       }
+      console.log(this.total)
       console.log(this.productos)
 
     })
 
+  }
+  borrarProducto(id:string){
+    const cedula = this.route.snapshot.params["id"];
+    let prods=Object.values(this.carritoClient)[1]
+    delete prods[id];
+    console.log(prods);
+    this.carSvc.updateCarritoID(cedula,JSON.stringify(prods)).subscribe(respuesta =>{
+      alert(`Se ha borrado el producto con id ${id}`)
+      window.location.reload ();
+    })
+
+
+
+  }
+  comprar(){
+    const cedula = this.route.snapshot.params["id"];
+    let prods=Object.values(this.carritoClient)[1]
+    console.log(prods)
+    let ids=Object.keys(prods) //[001,002]
+    for (let x=0;x<ids.length;x++){
+      delete prods[ids[x]]
+    }
+    this.carSvc.updateCarritoID(cedula,JSON.stringify(prods)).subscribe(respuesta =>{
+      alert("Se ha realizado una compra!")
+            this.router.navigate([`/`])
+      
+    })
+
+    
   }
 
 
